@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  sdrplusplus:
+    build:
+      context: .
+    image: sdrplusplus:latest
+    command: 
+    network_mode: host
+    device_cgroup_rules:
+      - 'c 189:* rwm'
+    devices:
+      - '/dev/bus/usb'
+    restart: 'unless-stopped'
+

@@ -1,0 +1,6 @@
+build
+docker_builds
+Dockerfile
+docker-compose.yml
+.git
+.github
