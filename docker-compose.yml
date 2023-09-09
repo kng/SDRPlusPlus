@@ -4,11 +4,19 @@ services:
     build:
       context: .
     image: sdrplusplus:latest
-    command: 
+    init: true
     network_mode: host
+
     device_cgroup_rules:
       - 'c 189:* rwm'
     devices:
       - '/dev/bus/usb'
+    volumes:
+      - type: 'volume'
+        source: 'sdrplusplus'
+        target: '/opt/sdrpp'
     restart: 'unless-stopped'
+    stop_grace_period: 1s
 
+volumes:
+  sdrplusplus:

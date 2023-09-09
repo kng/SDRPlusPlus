@@ -35,7 +35,7 @@ RUN cmake -B build \
           -DOPT_BUILD_NEW_PORTAUDIO_SINK=ON \
           -DOPT_BUILD_M17_DECODER=ON \
           -DOPT_BUILD_PERSEUS_SOURCE=ON && \
-    cmake --build build --target install -- -j$(nproc)
+    cmake --build build --target install # -- -j$(nproc)
 
 ARG DEBIAN_IMAGE_TAG=bookworm
 FROM debian:${DEBIAN_IMAGE_TAG} AS runner
