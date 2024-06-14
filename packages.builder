@@ -3,6 +3,7 @@ automake
 build-essential
 ca-certificates
 cmake
+curl
 git
 libad9361-dev
 libairspy-dev

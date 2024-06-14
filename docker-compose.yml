@@ -6,7 +6,8 @@ services:
     image: sdrplusplus:latest
     init: true
     network_mode: host
-
+    security_opt:
+      - 'apparmor:unconfined'
     device_cgroup_rules:
       - 'c 189:* rwm'
     devices:
@@ -15,6 +16,12 @@ services:
       - type: 'volume'
         source: 'sdrplusplus'
         target: '/opt/sdrpp'
+      - type: 'bind'
+        source: '/var/run/dbus'
+        target: '/var/run/dbus'
+      - type: 'bind'
+        source: '/var/run/avahi-daemon/socket'
+        target: '/var/run/avahi-daemon/socket'
     restart: 'unless-stopped'
     stop_grace_period: 1s
 
