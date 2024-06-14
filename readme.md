@@ -311,6 +311,20 @@ sh make_macos_bundle.sh ./build ./SDR++.app
 
 This will create a `SDR++.app` bundle that you can instal like any other MacOS app by dragging it into Applications.
 
+# Building and running on Docker
+
+Building and running under docker is a nice way to separate the build environment and libraries from the host OS.
+The build process is a multistage build that uses two images, one with the -dev packages and another for the runtime.
+This means that the runtime image can be kept smaller, although the disk space is still needed to complete the build.
+
+```bash
+# Build the images with compose, 8 parallel
+docker compose build --build-arg CMAKE_BUILD_PARALLEL_LEVEL=8
+
+# Launch sdrpp server inside the container/service
+docker compose run --rm -it sdrplusplus
+```
+
 # Module List
 
 Not all modules are built by default. I decided to disable the build of those with large libraries, libraries that can't be installed through the package manager (or pothos) and those that are still in beta.
